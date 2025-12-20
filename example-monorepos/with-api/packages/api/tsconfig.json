@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "strictNullChecks": true,
-    "noUncheckedIndexedAccess": true,
-    "moduleResolution": "nodenext"
+    "noUncheckedIndexedAccess": true
   },
   "extends": "../../tsconfig.json"
 }

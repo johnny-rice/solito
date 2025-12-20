@@ -3,7 +3,9 @@
   "main": "index.ts",
   "dependencies": {
     "@orpc/client": "^1.13.0",
-    "@orpc/server": "^1.13.0"
+    "@orpc/server": "^1.13.0",
+    "@orpc/tanstack-query": "^1.13.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "name": "api"
 }

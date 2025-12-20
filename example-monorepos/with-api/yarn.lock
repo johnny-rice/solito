@@ -2606,6 +2606,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@orpc/tanstack-query@npm:^1.13.0":
+  version: 1.13.0
+  resolution: "@orpc/tanstack-query@npm:1.13.0"
+  dependencies:
+    "@orpc/shared": "npm:1.13.0"
+  peerDependencies:
+    "@orpc/client": 1.13.0
+    "@tanstack/query-core": ">=5.80.2"
+  checksum: 10/91d4e59a68ccc8330e225a4797650ee4aef194ccd004fd6be988a99fcea09b320151836d5cf78d64ac4921f1c374e7ea65e92c0a5e40fc21aef62e927a65dd56
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -2924,6 +2936,24 @@ __metadata:
   dependencies:
     tslib: "npm:^2.8.0"
   checksum: 10/e3f32c6deeecfb0fa3f22edff03a7b358e7ce16d27b0f1c8b5cdc3042c5c4ce4da6eac0b781ab7cc4f54696ece657467d56734fb26883439fb00017385364c4c
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-core@npm:5.90.12":
+  version: 5.90.12
+  resolution: "@tanstack/query-core@npm:5.90.12"
+  checksum: 10/e7a23a83152c40c5eced669a0d0965b19467c03009b383b6bc18b5ee86db7a7357984a2c851ba60859cbeb6966bb9756314c153c14532c75fd24d0159cbe7e56
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.90.12":
+  version: 5.90.12
+  resolution: "@tanstack/react-query@npm:5.90.12"
+  dependencies:
+    "@tanstack/query-core": "npm:5.90.12"
+  peerDependencies:
+    react: ^18 || ^19
+  checksum: 10/8119fbaeec7f40fba68723f438b6440dcf4ac10e086f252f84ca3eef1ce5c416e02cfe26f8d43f6faf4ad0b0835741853824cdff7da8dd7aea5e515a7ce67c01
   languageName: node
   linkType: hard
 
@@ -3337,21 +3367,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"api-9e10e9@workspace:packages/api":
+"api@workspace:*, api@workspace:packages/api":
   version: 0.0.0-use.local
-  resolution: "api-9e10e9@workspace:packages/api"
+  resolution: "api@workspace:packages/api"
   dependencies:
     "@orpc/client": "npm:^1.13.0"
     "@orpc/server": "npm:^1.13.0"
+    "@orpc/tanstack-query": "npm:^1.13.0"
   languageName: unknown
   linkType: soft
 
-"app@npm:*, app@workspace:packages/app":
+"app@npm:*, app@workspace:*, app@workspace:packages/app":
   version: 0.0.0-use.local
   resolution: "app@workspace:packages/app"
   dependencies:
     "@react-navigation/native": "npm:^7.0.15"
     "@react-navigation/native-stack": "npm:^7.2.1"
+    "@tanstack/react-query": "npm:^5.90.12"
+    api: "workspace:*"
     dripsy: "npm:^4.3.3"
     moti: "npm:^0.30.0"
     solito: "npm:next"
@@ -7838,7 +7871,8 @@ __metadata:
   resolution: "next-app@workspace:apps/next"
   dependencies:
     "@types/node": "npm:17.0.21"
-    app: "npm:*"
+    api: "workspace:*"
+    app: "workspace:*"
     eslint-config-next: "npm:13.2.0"
     next: "npm:^16.1.0"
     raf: "npm:^3.4.1"
