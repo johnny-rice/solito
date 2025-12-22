@@ -6,8 +6,6 @@
       "app/*": ["./packages/app/*"],
       "api/*": ["./packages/api/*"]
     },
-    "jsx": "react-jsx",
-    "module": "preserve",
-    "moduleResolution": "bundler"
+    "jsx": "react-jsx"
   }
 }

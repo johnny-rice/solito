@@ -2,8 +2,14 @@
 
 import { TextLink } from 'solito/link'
 import { Text, View } from 'react-native'
+import { useQuery } from '@tanstack/react-query'
+import { query } from 'api/frontend/react-query'
 
 export function HomeScreen() {
+  const { data } = useQuery(
+    query.user.list.queryOptions({ input: { limit: 10 } })
+  )
+
   return (
     <View
       style={{

@@ -1,11 +1,10 @@
-import type { RouterClient } from '@orpc/server'
-import { createORPCClient } from '@orpc/client'
 import { RPCLink } from '@orpc/client/fetch'
-import type { router } from 'api/backend/router'
+import { getAuthToken } from 'api/frontend/getAuthToken'
 
 export const link = new RPCLink({
-  url: 'http://127.0.0.1:3000',
-  headers: { Authorization: 'Bearer token' },
+  url: process.env.NEXT_PUBLIC_API_URL ?? 'http://127.0.0.1:3000',
+  headers: async () => {
+    const token = await getAuthToken()
+    return { Authorization: `Bearer ${token}` }
+  },
 })
-
-export const api: RouterClient<typeof router> = createORPCClient(link)

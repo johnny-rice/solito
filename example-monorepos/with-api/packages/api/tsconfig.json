@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "strictNullChecks": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "module": "preserve",
+    "moduleResolution": "bundler"
   },
   "extends": "../../tsconfig.json"
 }
