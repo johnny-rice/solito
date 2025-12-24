@@ -7,5 +7,12 @@
       "api/*": ["./packages/api/*"]
     },
     "jsx": "react-jsx"
-  }
+  },
+  "exclude": ["node_modules"],
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "apps/**/*.ts",
+    "apps/**/*.tsx"
+  ]
 }

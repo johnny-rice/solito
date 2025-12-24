@@ -3542,7 +3542,7 @@ __metadata:
     api: "workspace:*"
     dripsy: "npm:^4.3.3"
     moti: "npm:^0.30.0"
-    solito: "npm:next"
+    solito: "npm:latest"
   languageName: unknown
   linkType: soft
 
@@ -9572,9 +9572,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solito-blank@workspace:.":
+"solito-api@workspace:.":
   version: 0.0.0-use.local
-  resolution: "solito-blank@workspace:."
+  resolution: "solito-api@workspace:."
   dependencies:
     "@types/react": "npm:19.1.10"
     eslint: "npm:^8.21.0"
@@ -9583,12 +9583,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"solito@npm:next":
-  version: 5.0.0-alpha.1
-  resolution: "solito@npm:5.0.0-alpha.1"
+"solito@npm:latest":
+  version: 5.0.0
+  resolution: "solito@npm:5.0.0"
   dependencies:
     typescript: "npm:^5.0.4"
-  checksum: 10/ae8192a8923359473f90819fb9abefadff0d32f7ee62efb8801e372f10398c95555e9ffb95206f22e72ac9a83ba553fb8e577a719125193eea6c3a593b4d9fca
+  checksum: 10/c2418807468d1e300038eaea62bd0c9142078b7b8195815a80fd87b196663dc552d9c8d7d7bbf85669b46c0a9bb2c2e5a40da882bf1e1e9bfadf45cdc2512d15
   languageName: node
   linkType: hard
 
