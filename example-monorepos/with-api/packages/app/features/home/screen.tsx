@@ -15,6 +15,8 @@ export function HomeScreen() {
       style={{
         padding: 16,
         gap: 32,
+        flex: 1,
+        backgroundColor: 'white',
       }}
     >
       <View style={{ gap: 16 }}>
@@ -28,7 +30,8 @@ export function HomeScreen() {
               <Text
                 style={{
                   fontSize: 15,
-                  fontWeight: 'bold',
+                  fontWeight: '500',
+                  textDecorationLine: 'underline',
                 }}
               >
                 {user.name}

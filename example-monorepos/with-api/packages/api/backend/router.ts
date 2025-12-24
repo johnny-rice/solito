@@ -1,6 +1,5 @@
 import * as z from 'zod'
 import { authorized, unauthorized } from 'api/backend/procedure'
-import { nextjsContext } from 'api/backend/nextjs-context'
 
 const UserSchema = z.object({
   id: z.string(),
@@ -18,27 +17,15 @@ const users: z.infer<typeof UserSchema>[] = [
   { id: '8', name: 'Tom Occhino' },
 ]
 
-const actionable = {
-  context: nextjsContext,
-}
-
 export const router = {
   user: {
-    list: unauthorized
-      .handler(async () => {
-        return users
-      })
-      .actionable(actionable),
+    list: unauthorized.handler(() => users),
     find: unauthorized
       .input(UserSchema.pick({ id: true }))
-      .handler(async ({ input }) => {
-        return users.find((user) => user.id === input.id)
-      })
-      .actionable(actionable),
-    create: authorized
-      .handler(async ({ input, context }) => {
-        return { id: 1, name: context.user.name }
-      })
-      .actionable(actionable),
+      .handler(({ input }) => users.find((user) => user.id === input.id)),
+    create: authorized.handler(({ context }) => ({
+      id: users.length + 1,
+      name: context.user.name,
+    })),
   },
 }
