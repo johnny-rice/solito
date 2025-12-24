@@ -1,6 +1,6 @@
 'use client'
 
-import { TextLink } from 'solito/link'
+import { Link } from 'solito/link'
 import { Text, View } from 'react-native'
 import { useQuery } from '@tanstack/react-query'
 import { query } from 'api/frontend/react-query'
@@ -13,44 +13,29 @@ export function HomeScreen() {
   return (
     <View
       style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         padding: 16,
         gap: 32,
       }}
     >
-      <H1>Solito API Example</H1>
-      <View style={{ maxWidth: 600, gap: 16 }}>
-        <Text style={{ textAlign: 'center' }}>
-          Here is a basic starter to show you how you can navigate from one
-          screen to another. This screen uses the same code on Next.js and React
-          Native.
-        </Text>
-        <Text style={{ textAlign: 'center' }}>
-          Solito is made by{' '}
-          <TextLink
-            href="https://twitter.com/fernandotherojo"
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: 'blue' }}
+      <View style={{ gap: 16 }}>
+        {data?.map((user) => (
+          <Link
+            href={`/users/${user.id}`}
+            key={user.id}
+            style={{ flexDirection: 'row', gap: 16 }}
           >
-            Fernando Rojo
-          </TextLink>
-          .
-        </Text>
-      </View>
-      <View style={{ flexDirection: 'row', gap: 32 }}>
-        <TextLink
-          href="/users/fernando"
-          style={{
-            fontSize: 16,
-            fontWeight: 'bold',
-            color: 'blue',
-          }}
-        >
-          Users: {JSON.stringify(data)}
-        </TextLink>
+            <View style={{ flex: 1 }}>
+              <Text
+                style={{
+                  fontSize: 15,
+                  fontWeight: 'bold',
+                }}
+              >
+                {user.name}
+              </Text>
+            </View>
+          </Link>
+        ))}
       </View>
     </View>
   )

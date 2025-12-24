@@ -85,7 +85,7 @@ You can also install the native library inside of `packages/app` if you want to 
 
 ## 🎙 About the creator
 
-Follow Fernando Rojo on Twitter: [@FernandoTheRojo](https://twitter.com/fernandotherojo)
+Follow Fernando Rojo on Twitter: [@FernandoRojo](https://twitter.com/fernandotherojo)
 
 ## 🧐 Why use Expo + Next.js?
 
