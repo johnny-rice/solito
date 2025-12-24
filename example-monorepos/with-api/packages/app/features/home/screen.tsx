@@ -1,7 +1,7 @@
 'use client'
 
 import { Link } from 'solito/link'
-import { Text, View } from 'react-native'
+import { Text, TextStyle, View } from 'react-native'
 import { useQuery } from '@tanstack/react-query'
 import { query } from 'api/frontend/react-query'
 
@@ -20,23 +20,10 @@ export function HomeScreen() {
       }}
     >
       <View style={{ gap: 16 }}>
+        <P>Solito API Example</P>
         {data?.map((user) => (
-          <Link
-            href={`/users/${user.id}`}
-            key={user.id}
-            style={{ flexDirection: 'row', gap: 16 }}
-          >
-            <View style={{ flex: 1 }}>
-              <Text
-                style={{
-                  fontSize: 15,
-                  fontWeight: '500',
-                  textDecorationLine: 'underline',
-                }}
-              >
-                {user.name}
-              </Text>
-            </View>
+          <Link href={`/users/${user.id}`} key={user.id}>
+            <P style={{ textDecorationLine: 'underline' }}>{user.name}</P>
           </Link>
         ))}
       </View>
@@ -44,10 +31,16 @@ export function HomeScreen() {
   )
 }
 
-const H1 = ({ children }: { children: React.ReactNode }) => {
-  return <Text style={{ fontWeight: '800', fontSize: 24 }}>{children}</Text>
-}
-
-const P = ({ children }: { children: React.ReactNode }) => {
-  return <Text style={{ textAlign: 'center' }}>{children}</Text>
+function P({
+  children,
+  style,
+}: {
+  children: React.ReactNode
+  style?: TextStyle
+}) {
+  return (
+    <Text style={[{ fontSize: 15, fontWeight: 'bold' }, style]}>
+      {children}
+    </Text>
+  )
 }

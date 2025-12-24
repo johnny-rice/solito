@@ -8,7 +8,8 @@ export default async function Home() {
 
   // kick off the request on the server
   // without awaiting it!
-  client.prefetchQuery(query.user.list.queryOptions({ input: { limit: 10 } }))
+  // try adding await to make the page blocked by data
+  client.prefetchQuery(query.user.list.queryOptions())
 
   return (
     // PrefetchBoundary streams the response to the client
