@@ -4,7 +4,8 @@
   "dependencies": {
     "@orpc/client": "^1.13.0",
     "@orpc/server": "^1.13.0",
-    "@orpc/tanstack-query": "^1.13.0"
+    "@orpc/tanstack-query": "^1.13.0",
+    "zod": "4.2.1"
   },
   "sideEffects": false,
   "name": "api",

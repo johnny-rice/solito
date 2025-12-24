@@ -20,7 +20,7 @@ export function HomeScreen() {
         gap: 32,
       }}
     >
-      <H1>Welcome to Solito.</H1>
+      <H1>Solito API Example</H1>
       <View style={{ maxWidth: 600, gap: 16 }}>
         <Text style={{ textAlign: 'center' }}>
           Here is a basic starter to show you how you can navigate from one
@@ -49,7 +49,7 @@ export function HomeScreen() {
             color: 'blue',
           }}
         >
-          Link
+          Users: {JSON.stringify(data)}
         </TextLink>
       </View>
     </View>

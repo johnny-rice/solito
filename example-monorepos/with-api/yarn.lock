@@ -3545,6 +3545,7 @@ __metadata:
     "@orpc/server": "npm:^1.13.0"
     "@orpc/tanstack-query": "npm:^1.13.0"
     expo: "npm:^54.0.30"
+    zod: "npm:4.2.1"
   languageName: unknown
   linkType: soft
 
@@ -10949,5 +10950,12 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 10/f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zod@npm:4.2.1":
+  version: 4.2.1
+  resolution: "zod@npm:4.2.1"
+  checksum: 10/f21d106ce31e0f24040aa13b13fdd1300fcc8119622b28ca1b1b726ff70b75190dbcfeb927d34f19174683afa298e5df4d806f622abe9b037a0aadb9cdef6443
   languageName: node
   linkType: hard

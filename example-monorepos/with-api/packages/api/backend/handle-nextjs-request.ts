@@ -1,7 +1,6 @@
 import { RPCHandler } from '@orpc/server/fetch'
 import { onError } from '@orpc/server'
 import { router } from './router'
-import { cookies } from 'next/headers'
 
 const handler = new RPCHandler(router, {
   interceptors: [
@@ -11,13 +10,12 @@ const handler = new RPCHandler(router, {
   ],
 })
 
-export const getNextjsRequestHandler = (prefix: `/${string}`) => {
+export const getRequestHandler = ({ prefix }: { prefix: `/${string}` }) => {
   return async (request: Request) => {
     const { response } = await handler.handle(request, {
       prefix,
       context: {
         headers: request.headers,
-        cookies: await cookies(),
       },
     })
 

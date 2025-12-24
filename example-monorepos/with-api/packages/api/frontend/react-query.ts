@@ -1,4 +1,4 @@
 import { createTanstackQueryUtils } from '@orpc/tanstack-query'
-import { api } from 'api/frontend/link'
+import { rpc } from 'api/frontend/rpc'
 
-export const query = createTanstackQueryUtils(api)
+export const query = createTanstackQueryUtils(rpc)

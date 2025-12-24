@@ -1,5 +1,6 @@
 import { StylesProvider } from './styles-provider'
 import './globals.css'
+import { QueryProvider } from 'app/provider/query/provider'
 
 export const metadata = {
   title: 'Create Solito App',
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <StylesProvider>{children}</StylesProvider>
+        <QueryProvider>
+          <StylesProvider>{children}</StylesProvider>
+        </QueryProvider>
       </body>
     </html>
   )

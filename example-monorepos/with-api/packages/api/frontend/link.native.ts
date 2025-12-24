@@ -1,10 +1,16 @@
 import { RPCLink } from '@orpc/client/fetch'
-import { getAuthToken } from 'api/frontend/getAuthToken'
+import { getAuthTokenClient } from 'api/frontend/get-auth-token-client'
+import { ORPC_PATHNAME } from 'api/shared/constants'
+
+let url = new URL(
+  ORPC_PATHNAME,
+  process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:3000'
+)
 
 export const link = new RPCLink({
-  url: process.env.EXPO_PUBLIC_API_URL ?? 'http://127.0.0.1:3000',
+  url,
   headers: async () => {
-    const token = await getAuthToken()
+    const token = await getAuthTokenClient()
     return { Authorization: `Bearer ${token}` }
   },
   async fetch(request, init) {

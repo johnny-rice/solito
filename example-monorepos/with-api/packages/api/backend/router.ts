@@ -3,17 +3,19 @@ import { authorized, unauthorized } from 'api/backend/procedure'
 import { nextjsContext } from 'api/backend/nextjs-context'
 
 const UserSchema = z.object({
-  id: z.number().int().min(1),
+  id: z.string(),
   name: z.string(),
 })
 
 const users: z.infer<typeof UserSchema>[] = [
-  { id: 1, name: 'Fernando Rojo' },
-  { id: 2, name: 'Guillermo Rauch' },
-  { id: 4, name: 'Charlie Cheever' },
-  { id: 3, name: 'Evil Rabbit' },
-  { id: 5, name: 'Evan Bacon' },
-  { id: 6, name: 'Shadcn' },
+  { id: '1', name: 'Fernando Rojo' },
+  { id: '2', name: 'Guillermo Rauch' },
+  { id: '3', name: 'Charlie Cheever' },
+  { id: '4', name: 'Evil Rabbit' },
+  { id: '5', name: 'Evan Bacon' },
+  { id: '6', name: 'Shadcn' },
+  { id: '7', name: 'James Ide' },
+  { id: '8', name: 'Tom Occhino' },
 ]
 
 const actionable = {
@@ -23,13 +25,7 @@ const actionable = {
 export const router = {
   user: {
     list: unauthorized
-      .input(
-        z.object({
-          limit: z.number().int().min(1).max(100).optional(),
-          cursor: z.number().int().min(0).default(0),
-        })
-      )
-      .handler(async ({ input }) => {
+      .handler(async () => {
         return users
       })
       .actionable(actionable),
