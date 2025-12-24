@@ -1,7 +1,9 @@
 import { createRouterClient } from '@orpc/server'
 import { router } from 'api/backend/router'
-import { nextjsContext } from 'api/backend/nextjs-context'
+import { headers } from 'next/headers'
 
 export const rsc = createRouterClient(router, {
-  context: nextjsContext,
+  context: async () => ({
+    headers: await headers(),
+  }),
 })

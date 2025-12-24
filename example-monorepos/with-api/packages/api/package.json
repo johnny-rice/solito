@@ -1,6 +1,5 @@
 {
   "version": "0.0.0",
-  "main": "index.ts",
   "dependencies": {
     "@orpc/client": "^1.13.0",
     "@orpc/server": "^1.13.0",

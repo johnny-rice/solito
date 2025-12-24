@@ -3,7 +3,9 @@ import { ORPC_PATHNAME } from 'api/shared/constants'
 
 let url = new URL(
   ORPC_PATHNAME,
-  process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000'
+  process.env.VERCEL_URL ??
+    process.env.NEXT_PUBLIC_API_URL ??
+    'http://localhost:3000'
 )
 
 if (typeof window !== 'undefined') {
