@@ -13,6 +13,8 @@ module.exports = {
     'react-native-gesture-handler',
   ],
 
+  cacheComponents: true,
+
   compiler: {
     define: {
       __DEV__: JSON.stringify(process.env.NODE_ENV !== 'production'),

@@ -1,5 +1,6 @@
 import * as z from 'zod'
 import { authorized, unauthorized } from 'api/backend/procedure'
+import { InferRouterInputs, InferRouterOutputs } from '@orpc/server'
 
 const UserSchema = z.object({
   id: z.string(),
@@ -29,3 +30,6 @@ export const router = {
     })),
   },
 }
+
+export type RouterOut = InferRouterOutputs<typeof router>
+export type RouterIn = InferRouterInputs<typeof router>

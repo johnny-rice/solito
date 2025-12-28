@@ -4,10 +4,17 @@ import { Link } from 'solito/link'
 import { Text, TextStyle, View } from 'react-native'
 import { useQuery } from '@tanstack/react-query'
 import { query } from 'api/frontend/react-query'
+import { RouterOut } from 'api/backend/router'
 
-export function HomeScreen() {
+export function HomeScreen({
+  initialData,
+}: {
+  initialData?: { users?: RouterOut['user']['list'] }
+}) {
   const { data } = useQuery(
-    query.user.list.queryOptions({ input: { limit: 10 } })
+    query.user.list.queryOptions({
+      initialData: initialData?.users,
+    })
   )
 
   return (

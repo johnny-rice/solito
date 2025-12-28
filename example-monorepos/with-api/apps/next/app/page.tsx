@@ -1,20 +1,25 @@
-import { query } from 'api/frontend/react-query'
+import { rsc } from 'api/backend/rsc'
+import { router } from 'api/backend/router'
 import { HomeScreen } from 'app/features/home/screen'
-import { PrefetchBoundary } from 'app/provider/query/prefetch'
-import { getQueryClient } from 'app/provider/query/query-client'
+import { headers } from 'next/headers'
+import { Suspense } from 'react'
 
 export default async function Home() {
-  const client = getQueryClient()
+  const headersList = await headers()
+  const token = headersList.get('Authorization')
 
-  // kick off the request on the server
-  // without awaiting it!
-  // try adding await to make the page blocked by data
-  client.prefetchQuery(query.user.list.queryOptions())
+  const users = await getUsers({ token })
 
   return (
-    // PrefetchBoundary streams the response to the client
-    <PrefetchBoundary client={client}>
-      <HomeScreen />
-    </PrefetchBoundary>
+    <Suspense>
+      <HomeScreen initialData={{ users }} />
+    </Suspense>
   )
+}
+
+async function getUsers({ token }: { token: string | null }) {
+  'use cache'
+  const headers = new Headers()
+  headers.set('Authorization', `Bearer ${token}`)
+  return router.user.list.callable({ context: { headers } })()
 }
