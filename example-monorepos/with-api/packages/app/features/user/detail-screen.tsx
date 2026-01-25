@@ -1,19 +1,21 @@
 'use client'
 import { useQuery } from '@tanstack/react-query'
 import { View, Text, Pressable } from 'react-native'
-import { useRouter, useSearchParams } from 'solito/navigation'
+import { useRouter } from 'solito/navigation'
 import { query } from 'api/frontend/react-query'
 import { RouterOut } from 'api/backend/router'
 import { useParams } from 'next/navigation'
 
 export function UserDetailScreen({
   initialData,
+  ...rest
 }: {
   initialData?: { user?: RouterOut['user']['find'] }
 }) {
   const router = useRouter()
   const params = useParams<{ userId: string }>()
-  const id = params?.userId
+  // @ts-ignore TODO fix useParams on native
+  const id = params?.userId ?? rest.route.params.userId
   const { data } = useQuery(
     query.user.find.queryOptions({
       input: { id: id! },
