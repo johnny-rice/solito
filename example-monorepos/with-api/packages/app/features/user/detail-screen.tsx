@@ -1,13 +1,31 @@
+'use client'
+import { useQuery } from '@tanstack/react-query'
 import { View, Text, Pressable } from 'react-native'
 import { useRouter, useSearchParams } from 'solito/navigation'
+import { query } from 'api/frontend/react-query'
+import { RouterOut } from 'api/backend/router'
+import { useParams } from 'next/navigation'
 
-export function UserDetailScreen() {
+export function UserDetailScreen({
+  initialData,
+}: {
+  initialData?: { user?: RouterOut['user']['find'] }
+}) {
   const router = useRouter()
-  const params = useSearchParams()
+  const params = useParams<{ userId: string }>()
+  const id = params?.userId
+  const { data } = useQuery(
+    query.user.find.queryOptions({
+      input: { id: id! },
+      enabled: !!id,
+      initialData: initialData?.user,
+    })
+  )
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Pressable onPress={() => router.back()}>
-        <Text>👈 welcome, {params?.get('id')}! (press me to go back)</Text>
+        {data && <Text>👈 welcome, {data?.name}! (press me to go back!)</Text>}
       </Pressable>
     </View>
   )

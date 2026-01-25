@@ -1,18 +1,39 @@
-'use client'
-import { Text, View } from 'react-native'
-import { useParams, useRouter } from 'solito/navigation'
+import { UserDetailScreen } from 'app/features/user/detail-screen'
+import { cacheTag } from 'next/cache'
+import { headers } from 'next/headers'
+import { router } from 'api/backend/router'
+import { Suspense } from 'react'
 
-const useUserParams = useParams<{ userId: string }>
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ userId: string }>
+}) {
+  const headersList = await headers()
+  const token = headersList.get('Authorization')
+  const { userId } = await params
 
-export default function Home() {
-  const { userId } = useUserParams()
-  const router = useRouter()
+  const user = await getUser({ userId, token })
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text onPress={() => router.back()}>
-        Hi {userId}, click me to go back
-      </Text>
-    </View>
+    <Suspense>
+      <UserDetailScreen initialData={{ user }} />
+    </Suspense>
   )
+}
+
+async function getUser({
+  userId,
+  token,
+}: {
+  userId: string
+  token: string | null
+}) {
+  'use cache'
+  cacheTag('users', userId)
+  const headers = new Headers()
+  headers.set('Authorization', `Bearer ${token}`)
+  return router.user.find.callable({
+    context: { headers },
+  })({ id: userId })
 }

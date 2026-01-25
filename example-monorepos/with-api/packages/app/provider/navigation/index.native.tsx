@@ -9,19 +9,16 @@ export function NavigationProvider({
 }) {
   return (
     <NavigationContainer
-      linking={useMemo(
-        () => ({
-          prefixes: [Linking.createURL('/')],
-          config: {
-            initialRouteName: 'home',
-            screens: {
-              home: '',
-              'user-detail': 'users/:id',
-            },
+      linking={{
+        prefixes: [Linking.createURL('/')],
+        config: {
+          initialRouteName: 'home',
+          screens: {
+            home: '',
+            'user-detail': 'users/:id',
           },
-        }),
-        []
-      )}
+        },
+      }}
     >
       {children}
     </NavigationContainer>

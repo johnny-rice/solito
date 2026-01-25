@@ -23,7 +23,12 @@ export const router = {
     list: unauthorized.handler(() => users),
     find: unauthorized
       .input(UserSchema.pick({ id: true }))
-      .handler(({ input }) => users.find((user) => user.id === input.id)),
+      .handler(({ input }) => {
+        console.log('find', input)
+        const user = users.find((user) => user.id === input.id)
+        console.log('user', user)
+        return user
+      }),
     create: authorized.handler(({ context }) => ({
       id: users.length + 1,
       name: context.user.name,
